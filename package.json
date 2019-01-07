@@ -1,0 +1,17 @@
+{
+  "name": "promise.queue",
+  "version": "1.0.0",
+  "description": "queue promise",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [
+    "queue",
+    "promise",
+    "queue-promise",
+    "promise-queue"
+  ],
+  "author": "kele",
+  "license": "MIT"
+}
