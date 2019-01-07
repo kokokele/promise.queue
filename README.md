@@ -27,9 +27,11 @@ let p2 = new Promise((resolve, reject) => {
 let p3 = new Promise((resolve, reject) => {
   resolve('p2 success')
 });
+
+
 const qp = new QueuePromise([p1, p2, p3], {
   callback: function() {
-    console.log('===done===');
+    console.log('===all done===');
   },
   errorInterrupt: false
 });
