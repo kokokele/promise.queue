@@ -48,7 +48,7 @@ qp.run();
 
 ####  new QueuePromise(queue, options):
 ```
- queue : promise queue> ;
+ queue : promise queue,
  options: {
   callback: Function // all done callback,
   errorInterrupt: Boolean // True stops subsequent execution when an error is encountered and vice versa
