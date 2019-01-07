@@ -57,20 +57,21 @@ qp.run();
 
 #### methods:
 
-- on(event, handle);
+- on(event, handle): each execution call
+
 ```
 event: String ('success' or 'error');
 hanlde: Function
 ```
 
 - add(promise) 
-add promise in queue
+> add promise in queue
 
 - pause()
-pasue execute
+> pasue execute
 
 - resume()
-resume queue execute
+> resume queue execute
 
 
 
