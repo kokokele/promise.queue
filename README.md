@@ -45,8 +45,8 @@ const qp = new QueuePromise([p1, p2, p3], {
 qp.on('success', res => {
   // res
 });
-qp.on('error', res => {
-  //error
+qp.on('error', err => {
+  //err
 })
 
 qp.run();
