@@ -1,5 +1,7 @@
 # Promise.queue
 
+[![Build Status](https://travis-ci.org/kokokele/promise.queue.svg?branch=master)](https://travis-ci.org/kokokele/promise.queue.svg?branch=master)
+
 ## install
 npm i promise-queue-easy
 
