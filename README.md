@@ -81,6 +81,9 @@ hanlde: Function
 - resume()
 > resume queue execute
 
+- get running 
+> return Boolean 
+
 
 
 
