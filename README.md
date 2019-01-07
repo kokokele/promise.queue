@@ -1,9 +1,17 @@
+# Promise.queue
+
+## install
+npm i 
+
+
+## use
+```js
 const QueuePromise = require('../index');
 
 
 let p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('p1 success');
+    resolve('1s after');
   }, 1000);
 })
 
@@ -17,23 +25,12 @@ let p2 = new Promise((resolve, reject) => {
 let p3 = new Promise((resolve, reject) => {
   resolve('p2 success')
 });
-
-
-describe('queue', () => {
-
-  it('normal', () => {
-    const fn = jest.fn();
-    const qp = new QueuePromise([p1, p2, p3], {
-      callback: () => {
-      
-      },
-      errorInterrupt: false
-    });
-
-    qp.run();
-  });
+const qp = new QueuePromise([p1, p2, p3], {
+  callback: function() {
+    console.log('===done===');
+  },
+  errorInterrupt: false
 })
 
-
-
-
+qp.run();
+```

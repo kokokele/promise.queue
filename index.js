@@ -44,7 +44,7 @@
       this.inPause = true;
     }
 
-    qp.prototype.replay = function() {
+    qp.prototype.resume = function() {
       this.inPause = false;
       this._run();
     }

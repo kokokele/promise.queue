@@ -1,10 +1,10 @@
 {
-  "name": "promise.queue",
+  "name": "promise-queue-easy",
   "version": "1.0.0",
   "description": "queue promise",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest test/"
   },
   "keywords": [
     "queue",
@@ -13,5 +13,9 @@
     "promise-queue"
   ],
   "author": "kele",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
 }
