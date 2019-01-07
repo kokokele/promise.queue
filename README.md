@@ -82,7 +82,7 @@ hanlde: Function
 > resume queue execute
 
 - get running 
-> return Boolean 
+ return Boolean 
 
 
 
