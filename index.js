@@ -25,6 +25,10 @@
       this.callback = callback;
       this.errorInterrupt = errorInterrupt;
       this.index = 0;
+      this.handle = {
+        success: function(){},
+        error: function(){}
+      };
     }
 
     qp.prototype.run = function() {
@@ -39,6 +43,20 @@
         this.list.push(p);
       }
     }
+
+    qp.prototype.on = function(event, handle) {
+      if(typeof event !== 'string') {
+        throw new Error('on function event must be String');
+      }
+      if (!['success', 'error'].includes(event)) {
+        throw new Error('on event must be "success" or "error"');
+      }
+      if (typeof handle !== 'function') {
+        throw new Error('on function handle must be Function');
+      }
+
+      this.handle[event] = handle;
+    } 
 
     qp.prototype.pause = function() {
       this.inPause = true;
@@ -60,9 +78,11 @@
       if (isPromise(p)) {
         p.then(function(res){
           // console.log(res);
+          self.handle['success'](res);
           go();
         }).catch((err) => {
-          console.log('err:', err);
+          // console.log('err:', err);
+          self.handle['error'](err);
           if (!self.errorInterrupt) {
             go();
           }

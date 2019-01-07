@@ -1,7 +1,7 @@
 # Promise.queue
 
 ## install
-npm i 
+npm i promise-queue-easy
 
 
 ## use
