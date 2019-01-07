@@ -4,9 +4,10 @@
 npm i promise-queue-easy
 
 
-## use
+## Example
+
 ```js
-const QueuePromise = require('../index');
+const QueuePromise = require('promise-queue-easy');
 
 
 let p1 = new Promise((resolve, reject) => {
@@ -16,10 +17,9 @@ let p1 = new Promise((resolve, reject) => {
 })
 
 let p2 = new Promise((resolve, reject) => {
-  // resolve('success')
   setTimeout(() => {
     reject('p2 error');
-  }, 100)
+  }, 100);
 });
 
 let p3 = new Promise((resolve, reject) => {
@@ -30,7 +30,47 @@ const qp = new QueuePromise([p1, p2, p3], {
     console.log('===done===');
   },
   errorInterrupt: false
+});
+
+qp.on('success', res => {
+  // res
+});
+qp.on('error', res => {
+  //error
 })
 
 qp.run();
 ```
+
+## doc
+
+####  new QueuePromise(queue, options):
+```
+ queue : promise queue> ;
+ options: {
+  callback: Function // all done callback,
+  errorInterrupt: Boolean // True stops subsequent execution when an error is encountered and vice versa
+ }
+```
+
+#### methods:
+
+- on(event, handle);
+```
+event: String ('success' or 'error');
+hanlde: Function
+```
+
+- add(promise) 
+add promise in queue
+
+- pause()
+pasue execute
+
+- resume()
+resume queue execute
+
+
+
+
+
