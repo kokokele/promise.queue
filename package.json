@@ -6,6 +6,10 @@
   "scripts": {
     "test": "jest test/"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/kokokele/promise.queue"
+  },
   "keywords": [
     "queue",
     "promise",
