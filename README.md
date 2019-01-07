@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/kokokele/promise.queue.svg?branch=master)](https://travis-ci.org/kokokele/promise.queue.svg?branch=master)
 
-[https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)
+[![NPM Version](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)
 
 ## install
 npm i promise-queue-easy
