@@ -2,7 +2,7 @@
 [![NPM](https://nodei.co/npm/promise-queue-easy.png)](https://nodei.co/npm/promise-queue-easy/)
 [![Build Status](https://travis-ci.org/kokokele/promise.queue.svg?branch=master)](https://travis-ci.org/kokokele/promise.queue.svg?branch=master)
 [![NPM Version](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)
-[![Dowload](https://npmcharts.com/compare/promise-queue-easy?minimal=true&interval=30)](https://npmcharts.com/compare/promise-queue-easy?minimal=true&interval=30)
+[![Dowload](https://img.shields.io/npm/dw/promise-queue-easy.svg)](https://npmcharts.com/compare/promise-queue-easy?minimal=true&interval=30)
 
 ## support
 - AMD
