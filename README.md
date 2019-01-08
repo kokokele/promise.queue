@@ -23,21 +23,27 @@ yarn add promise-queue-easy
 const QueuePromise = require('promise-queue-easy');
 
 
-let p1 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('1s after');
-  }, 1000);
-})
+let p1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('p1 success;');
+    }, 1000);
+  });
+}
 
-let p2 = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    reject('p2 error');
-  }, 100);
+let p2 = () => {
+  return new Promise((resolve, reject) => {
+    // resolve('success')
+    setTimeout(() => {
+      reject('p2 error;');
+    }, 100)
+  });
+}
+
+let p3 = () =>  new Promise((resolve, reject) => {
+  resolve('p3 success;')
 });
 
-let p3 = new Promise((resolve, reject) => {
-  resolve('p2 success')
-});
 
 
 const qp = new QueuePromise([p1, p2, p3], {

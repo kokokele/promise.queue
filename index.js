@@ -19,6 +19,10 @@
       return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
     }
 
+    function isFun(fun) {
+      return typeof fun === 'function';
+    }
+
     function qp(list = [], {callback = function() {}, errorInterrupt = true} = {}) {
       this.running = true;
       this.list = list;
@@ -38,9 +42,9 @@
       this._run();
     }
 
-    qp.prototype.add = function() {
-      if (isPromise(p)) {
-        this.list.push(p);
+    qp.prototype.add = function(fun) {
+      if (isFun(fun)) {
+        this.list.push(fun);
       }
     }
 
@@ -69,24 +73,32 @@
 
     qp.prototype._run = function() {
       const self = this;
-      const p = this.list[this.index];
-      if (!p) {
+      const fun = this.list[this.index];
+      if (!fun) {
         this.running = false;
         this.callback();
         return;
       }
-      if (isPromise(p)) {
-        p.then(function(res){
-          // console.log(res);
-          self.handle['success'](res);
-          go();
-        }).catch((err) => {
-          // console.log('err:', err);
-          self.handle['error'](err);
-          if (!self.errorInterrupt) {
+      if (isFun(fun)) {
+        const p = fun();
+        if (isPromise(p)) {
+          p.then(function(res){
+            self.handle['success'](res);
             go();
-          }
-        });
+          }).catch((err) => {
+            self.handle['error'](err);
+            if (!self.errorInterrupt) {
+              go();
+            } else {
+              // if errorInterrupt === true , all done
+              this.callback();
+            }
+          });
+        } else {
+          self.handle['error'](new Error('return value is not Promise type'));
+          go();
+        }
+       
       } else {
         go();
       }
