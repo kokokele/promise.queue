@@ -9,7 +9,12 @@
 - Browser
 
 ## install
+```
 npm i promise-queue-easy
+or
+yarn add promise-queue-easy
+```
+
 
 
 ## Example
