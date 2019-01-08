@@ -4,6 +4,7 @@
   "description": "queue promise",
   "main": "index.js",
   "scripts": {
+    "pub": "npm version patch && npm publish",
     "test": "jest test/"
   },
   "repository": {
