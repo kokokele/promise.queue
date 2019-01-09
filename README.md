@@ -84,7 +84,7 @@ event: String ('success' or 'error');
 hanlde: Function
 ```
 
-- add(promise) 
+- add(fun) 
 `add promise in queue`
 
 - pause():
