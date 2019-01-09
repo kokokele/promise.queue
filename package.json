@@ -1,6 +1,6 @@
 {
   "name": "promise-queue-easy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "queue promise",
   "main": "index.js",
   "scripts": {
