@@ -89,4 +89,50 @@ describe('queue', () => {
     qp.on('error', fn);
     qp.run();
   });
+
+  it('methods: pause', done => {
+    const callback = jest.fn()
+    const qp = new QueuePromise([p0, p1, p2], {
+      callback,
+      errorInterrupt: true
+    });
+
+    qp.on('success', (res) => {
+      if (res === RETURN_VAL[0]) {
+        qp.pause();
+      }
+    });
+    qp.run(); 
+    
+    setTimeout(() => {
+      expect(callback.mock.calls.length).toBe(0);
+      done();
+    }, 2000)
+  });
+
+  it('methods: pause, resume, running', done => {
+    const callback = jest.fn()
+    const qp = new QueuePromise([p0, p1, p2], {
+      callback,
+      errorInterrupt: true
+    });
+
+    qp.on('success', (res) => {
+      if (res === RETURN_VAL[0]) {
+        qp.pause();
+        expect(qp.running).toBe(false);
+        setTimeout(() => {
+          qp.resume();
+          expect(qp.running).toBe(true);
+        }, 100)
+      }
+    });
+    qp.run();
+    expect(qp.running).toBe(true)
+
+    setTimeout(() => {
+      expect(callback.mock.calls.length).toBe(1);
+      done();
+    }, 2000)
+  });
 })
