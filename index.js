@@ -68,6 +68,7 @@
 
     qp.prototype.resume = function() {
       this.inPause = false;
+      this.running = true;
       this._run();
     }
 
@@ -104,8 +105,11 @@
       }
 
       function go() {
-        if (self.inPause) return;
         self.index++;
+        if (self.inPause) {
+          self.running = false;
+          return;
+        };
         self._run();
       }
     }
