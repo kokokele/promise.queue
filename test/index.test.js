@@ -54,7 +54,7 @@ describe('queue', () => {
       callback: () => {
         // console.log(fn.mock.calls[0][0]);
         // console.log(fn.mock.calls[1][0]);
-        console.log(fn.mock.calls[3][0]);
+        // console.log(fn.mock.calls[3][0]);
         const params = fn.mock.calls;
         expect(params[0][0]).toBe(RETURN_VAL[0]);
         expect(params[1][0]).toBe(RETURN_VAL[1]);
@@ -134,5 +134,23 @@ describe('queue', () => {
       expect(callback.mock.calls.length).toBe(1);
       done();
     }, 2000)
+  });
+
+  it('methods: add', done => {
+    const fn = jest.fn();
+    const qp = new QueuePromise([], {
+       callback: () => {
+        const params = fn.mock.calls;
+        expect(params[0][0]).toBe(RETURN_VAL[0]);
+        expect(params[1][0]).toBe(RETURN_VAL[2]);
+        done();
+      }    
+    });
+
+    qp.add(p0);
+    qp.add(p2);
+
+    qp.on('success', fn);
+    qp.run();
   });
 })
