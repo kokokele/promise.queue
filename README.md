@@ -16,7 +16,10 @@ or
 yarn add promise-queue-easy
 ```
 
-
+## test
+```
+npm run test
+```
 
 ## Example
 
