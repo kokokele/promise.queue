@@ -1,4 +1,7 @@
 const QueuePromise = require('../index');
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
 
 const RETURN_VAL = ['p1', 'p2', 'p3', 'p4', 'p5'];
 let p0 = () => {
@@ -26,6 +29,24 @@ let p3 = () => 'no promise';
 
 
 describe('queue', () => {
+
+  it('amd', () => {
+    const code = fs.readFileSync(path.resolve(__dirname, '../index.js'), 'utf8');
+    // console.log(queueCode);
+    const define = jest.fn();
+    define.amd = {};
+
+    var sandbox = {
+      global: {
+          __coverage__: global.__coverage__
+      },
+      define
+    };
+
+    vm.createContext(sandbox);
+    vm.runInContext(code, sandbox);
+    expect(define.mock.calls.length).toBe(1);
+  });
 
   it('normal', done => {
     const fn = jest.fn()
