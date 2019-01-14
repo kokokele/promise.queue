@@ -1,6 +1,7 @@
 # Promise.queue
 [![NPM](https://nodei.co/npm/promise-queue-easy.png)](https://nodei.co/npm/promise-queue-easy/)
 [![Build Status](https://travis-ci.org/kokokele/promise.queue.svg?branch=master)](https://travis-ci.org/kokokele/promise.queue.svg?branch=master)
+[![codecov](https://codecov.io/gh/kokokele/promise.queue/branch/master/graph/badge.svg)](https://codecov.io/gh/kokokele/promise.queue)
 [![NPM Version](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)
 [![Dowload](https://img.shields.io/npm/dm/promise-queue-easy.svg)](https://npmcharts.com/compare/promise-queue-easy?minimal=true&interval=30)
 
