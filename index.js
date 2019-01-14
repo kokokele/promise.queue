@@ -64,6 +64,7 @@
 
     qp.prototype.pause = function() {
       this.inPause = true;
+      this.running = false;
     }
 
     qp.prototype.resume = function() {

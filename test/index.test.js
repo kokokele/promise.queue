@@ -117,14 +117,14 @@ describe('queue', () => {
       errorInterrupt: true
     });
 
-    qp.on('success', (res) => {
+    qp.on('success', res => {
       if (res === RETURN_VAL[0]) {
         qp.pause();
         expect(qp.running).toBe(false);
         setTimeout(() => {
           qp.resume();
           expect(qp.running).toBe(true);
-        }, 100)
+        }, 100);
       }
     });
     qp.run();
@@ -152,5 +152,31 @@ describe('queue', () => {
 
     qp.on('success', fn);
     qp.run();
+  });
+
+  it('on event error', () => {
+    const qp = new QueuePromise([p0], {
+      callback: () => {
+     }    
+   });
+   expect(() => qp.on(null, jest.fn())).toThrowError('on function event must be String');
+   expect(() => qp.on('none success or error', jest.fn())).toThrowError('on event must be "success" or "error');
+   expect(() => qp.on('success', 'no function')).toThrowError('on function handle must be Function');
+  });
+
+  it('promise list have no function', done => {
+
+    const fn = jest.fn();
+    const qp = new QueuePromise([p0, 'no function', p2], {
+      callback: () => {
+        const params = fn.mock.calls;
+        expect(params[0][0]).toBe(RETURN_VAL[0]);
+        expect(params[1][0]).toBe(RETURN_VAL[2]); 
+        done();
+      }
+   });
+
+   qp.on('success', fn);
+   qp.run();
   });
 })
