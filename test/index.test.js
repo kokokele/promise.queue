@@ -48,7 +48,7 @@ describe('queue', () => {
     expect(define.mock.calls.length).toBe(1);
   });
 
-  it('amd', () => {
+  it('window', () => {
     const code = fs.readFileSync(path.resolve(__dirname, '../index.js'), 'utf8');
     var sandbox = {
       global: {
