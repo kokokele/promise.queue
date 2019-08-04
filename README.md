@@ -4,6 +4,8 @@
 [![codecov](https://codecov.io/gh/kokokele/promise.queue/branch/master/graph/badge.svg)](https://codecov.io/gh/kokokele/promise.queue)
 [![NPM Version](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)](https://img.shields.io/npm/v/promise-queue-easy.svg?style=flat)
 [![Dowload](https://img.shields.io/npm/dm/promise-queue-easy.svg)](https://npmcharts.com/compare/promise-queue-easy?minimal=true&interval=30)
+![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=kokokele.promise.queue)
+![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=kokokele.promise.queue)
 
 ## support
 - AMD
