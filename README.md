@@ -29,7 +29,6 @@ npm run test
 ```js
 const QueuePromise = require('promise-queue-easy');
 
-
 let p1 = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
