@@ -29,7 +29,6 @@ let p3 = () => 'no promise';
 
 
 describe('queue', () => {
-/*
   it('amd', () => {
     const code = fs.readFileSync(path.resolve(__dirname, '../index.js'), 'utf8');
     // console.log(queueCode);
@@ -48,7 +47,7 @@ describe('queue', () => {
     expect(define.mock.calls.length).toBe(1);
   });
 
-  it('amd', () => {
+  it('window', () => {
     const code = fs.readFileSync(path.resolve(__dirname, '../index.js'), 'utf8');
     var sandbox = {
       global: {
@@ -60,7 +59,6 @@ describe('queue', () => {
     vm.runInContext(code, sandbox);
     expect(typeof sandbox.Queue).toBe('function');
   });
-*/
   it('normal', done => {
     const fn = jest.fn()
     const qp = new QueuePromise([p0, p1, p2], {
