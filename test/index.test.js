@@ -29,7 +29,7 @@ let p3 = () => 'no promise';
 
 
 describe('queue', () => {
-
+/*
   it('amd', () => {
     const code = fs.readFileSync(path.resolve(__dirname, '../index.js'), 'utf8');
     // console.log(queueCode);
@@ -60,14 +60,16 @@ describe('queue', () => {
     vm.runInContext(code, sandbox);
     expect(typeof sandbox.Queue).toBe('function');
   });
-
+*/
   it('normal', done => {
     const fn = jest.fn()
     const qp = new QueuePromise([p0, p1, p2], {
-      callback: () => {
+      callback: (results) => {
         // console.log(fn.mock.calls[0][0]);
         // console.log(fn.mock.calls[1][0]);
         // console.log(fn.mock.calls[2][0]);
+        expect(results.length).toEqual(3);
+
         const params = fn.mock.calls;
         expect(params[0][0]).toBe(RETURN_VAL[0]);
         expect(params[1][0]).toBe(RETURN_VAL[1]);
@@ -109,7 +111,9 @@ describe('queue', () => {
   it('errorInterrupt = true', done => {
     const fn = jest.fn()
     const qp = new QueuePromise([p0, p1, p2], {
-      callback: () => {
+      callback: (results) => {
+        expect(results.length).toBe(1);
+
         const params = fn.mock.calls;
         expect(params[2]).toBeUndefined();
         // expect(params[1][0]).toBe(RETURN_VAL[1]);
@@ -131,8 +135,9 @@ describe('queue', () => {
       errorInterrupt: true
     });
 
-    qp.on('success', (res) => {
+    qp.on('success', (res, index) => {
       if (res === RETURN_VAL[0]) {
+        expect(index).toBe(0);
         qp.pause();
       }
     });

@@ -58,10 +58,10 @@ const qp = new QueuePromise([p1, p2, p3], {
   errorInterrupt: false
 });
 
-qp.on('success', res => {
+qp.on('success', (res, index) => {
   // res
 });
-qp.on('error', err => {
+qp.on('error', (err, index) => {
   //err
 })
 
@@ -74,7 +74,7 @@ qp.run();
 ```
  queue : promise queue,
  options: {
-  callback: Function // all done callback,
+  callback: Function //(results) => {}  all done callback,
   errorInterrupt: Boolean // True stops subsequent execution when an error is encountered and vice versa
  }
 ```

@@ -39,6 +39,7 @@
       this.index = 0;
       this.running = true;
       this.inPause = false;
+      this.results = [];
       this._run();
     }
 
@@ -78,22 +79,23 @@
       const fun = this.list[this.index];
       if (!fun) {
         this.running = false;
-        this.callback();
+        this.callback(self.results);
         return;
       }
       if (isFun(fun)) {
         const p = fun();
         if (isPromise(p)) {
           p.then(function(res){
-            self.handle['success'](res);
+            self.results[self.index] = res;
+            self.handle['success'](res, self.index);
             go();
           }).catch((err) => {
-            self.handle['error'](err);
+            self.handle['error'](err, self.index);
             if (!self.errorInterrupt) {
               go();
             } else {
               // if errorInterrupt === true , all done
-              this.callback();
+              this.callback(self.results);
             }
           });
         } else {
